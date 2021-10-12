@@ -16,22 +16,22 @@ The code was initially constructed using nested for loops, in which the code ana
 
 ##### Code
 ```
-'Loop for each ticker' _**<- Loop 1**_
+'Loop for each ticker' 
  For i = 0 To 11
     TotalVolume = 0
-    Sheets(yearValue).Activate _**<-Reactivation of sheet for each loop**_
+    Sheets(yearValue).Activate  '<---Reactivation of sheet for each loop
     'Loops over all rows
-    For j = RowStart To Rowend _**<-Loop 2**_
+    For j = RowStart To Rowend 
         'Calculate Total Volume
-        If Cells(j, 1).Value = tickers(i) Then _<-Repeated checks for stock name_
+        If Cells(j, 1).Value = tickers(i) Then   '<---Repeated checks for stock name
             TotalVolume = TotalVolume + Cells(j, 8).Value
         End If
         'Calculates starting price for yearly return'
-        If Cells(j, 1).Value = tickers(i) And Cells(j - 1, 1).Value <> tickers(i) Then _<-Repeated checks for stock name_
+        If Cells(j, 1).Value = tickers(i) And Cells(j - 1, 1).Value <> tickers(i) Then   '<---Repeated checks for stock name
             StartingPrice = Cells(j, 6).Value
         End If
         'Calculates closing price for yearly return'
-        If Cells(j, 1).Value = tickers(i) And Cells(j + 1, 1).Value <> tickers(i) Then _<-Repeated checks for stock name_
+        If Cells(j, 1).Value = tickers(i) And Cells(j + 1, 1).Value <> tickers(i) Then    '<---Repeated checks for stock name
             EndingPrice = Cells(j, 6).Value
         End If
     Next j    
@@ -42,25 +42,23 @@ The code was initially constructed using nested for loops, in which the code ana
 Next i
 ```
 
-![Initial Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2017.PNG) 
-
-![Initial Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2018.PNG)
+![Initial Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2017.PNG) ![Initial Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2018.PNG)
 
 #### Refactored code
 Since the data was in sequence and the sequence was defined in the tickers array, analysing each row for each stock was redundant. Therefore, the code was refactored to use arrays for the calculated measures as well. This reduced the run time considerably to about **.25 seconds**, which would vastly improve the performance of larger datasets.
 
 ##### Code
 ```
-'Declaring ticker index variables to store results *<-Creation of arrays*
+'Declaring ticker index variables to store results 
 tickerIndex = 0
 Dim tickerVolumes(0 To 11) As Long
 Dim tickerStartingPrice(0 To 11) As Single
 Dim tickerEndingPrice(0 To 11) As Single                    
-'Initializing ticker volume to zero *<-Initializing the arrays*
+'Initializing ticker volume to zero 
 For i = 0 To 11
     tickerVolumes(i) = 0
 Next i
-'Loop through all rows *<-One loop for calculation with reduced repitions*
+'Loop through all rows   <---One loop for calculation with reduced repitions
 For i = 2 To RowCount
     'Increasing volume for current ticker
     tickerVolumes(tickerIndex) = tickerVolumes(tickerIndex) + Cells(i, 8).Cells
@@ -75,7 +73,7 @@ For i = 2 To RowCount
         tickerIndex = tickerIndex + 1
     End If
 Next i       
-'Populating results from arrays into cells _<-Separate loop for results reducing transition time_
+'Populating results from arrays into cells   <---Separate loop for results reducing transition time
 For i = 0 To 11
     Worksheets("All Stocks Analysis").Activate
     Cells(4 + i, 1).Value = tickers(i)
@@ -84,9 +82,7 @@ For i = 0 To 11
 Next i
 ```
 
-![Refactored Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2017.PNG) 
-
-![Refactored Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2018.PNG)
+![Refactored Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2017.PNG) ![Refactored Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2018.PNG)
 
 ## Summary
 Generally, the initial code may be written with the purpose of arriving at results. This might not always be the optimal or better performing code. Therefore, reviewing the code again might provide insights into:
