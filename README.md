@@ -42,7 +42,9 @@ The code was initially constructed using nested for loops, in which the code ana
 Next i
 ```
 
-![Initial Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2017.PNG) ![Initial Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2018.PNG)
+![Initial Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2017.PNG) 
+
+![Initial Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/InitialCode_2018.PNG)
 
 #### Refactored code
 Since the data was in sequence and the sequence was defined in the tickers array, analysing each row for each stock was redundant. Therefore, the code was refactored to use arrays for the calculated measures as well. This reduced the run time considerably to about **.25 seconds**, which would vastly improve the performance of larger datasets.
@@ -82,7 +84,9 @@ For i = 0 To 11
 Next i
 ```
 
-![Refactored Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2017.PNG) ![Refactored Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2018.PNG)
+![Refactored Code_2017](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2017.PNG) 
+
+![Refactored Code_2018](https://github.com/Dhanushree27/Stock-analysis/blob/main/Resources/Refactored_2018.PNG)
 
 ## Summary
 Generally, the initial code may be written with the purpose of arriving at results. This might not always be the optimal or better performing code. Therefore, reviewing the code again might provide insights into:
