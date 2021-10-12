@@ -16,12 +16,12 @@ The code was initially constructed using nested for loops, in which the code ana
 
 ##### Code
 ```
-'Loop for each ticker' _<- Loop 1_
+'Loop for each ticker' _**<- Loop 1**_
  For i = 0 To 11
     TotalVolume = 0
-    Sheets(yearValue).Activate _<-Reactivation of sheet for each loop_
+    Sheets(yearValue).Activate _**<-Reactivation of sheet for each loop**_
     'Loops over all rows
-    For j = RowStart To Rowend _<-Loop 2_
+    For j = RowStart To Rowend _**<-Loop 2**_
         'Calculate Total Volume
         If Cells(j, 1).Value = tickers(i) Then _<-Repeated checks for stock name_
             TotalVolume = TotalVolume + Cells(j, 8).Value
